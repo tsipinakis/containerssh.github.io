@@ -2,8 +2,6 @@ title: ContainerSSH 0.5.0 Reference Manual
 
 <h1>ContainerSSH 0.5.0 Reference Manual</h1>
 
-{{ reference_upcoming() }}
-
 The Reference Manual provides reference material for ContainerSSH 0.4 and is oriented towards system operators wishing to use ContainerSSH on their system.
 
 ## Introduction
@@ -12,7 +10,7 @@ This manual contains documentation on how to set up, configure, monitor, and sec
 
 ## Changes since ContainerSSH 0.4.1
 
-ContainerSSH 0.5.0 is a feature and bugfix release. The reference manual for the older ContainerSSH 0.4.1 is [available here](../index.md). This release adds two main new features:
+ContainerSSH 0.5.0 is a feature and bugfix release. The reference manual for the older ContainerSSH 0.4.1 is [available here](/reference/0.4.0/). This release adds a significant number of features and bug fixes:
 
 1. OAuth2 and Kerberos authentication
 2. Authorization webhook
@@ -42,6 +40,10 @@ As part of our authentication and authorization overhaul we added a separate web
 [Read more »](auth.md){: .md-button}
 
 ## Metadata handling and passing
+
+The authentication and configuration servers now support passing metadata between each-other and to ContainerSSH.
+
+[Read more »](./auth-webhook.md#response){: .md-button}
 
 ## Deploying files
 

@@ -2,8 +2,6 @@ title: Authentication
 
 <h1>Authentication</h1>
 
-{{ reference_upcoming() }}
-
 ContainerSSH does not have a built-in user database. It needs to use external services to verify user credentials, such
 as a webhook, OAuth2, or Kerberos. This page describes what authentication methods ContainerSSH supports and how you can
 tie them to your external authentication databases.
@@ -57,17 +55,22 @@ method is always tied to one backend.
 | Keyboard-interactive      | :material-close:      | :material-check-bold: | :material-close:      |
 | GSSAPI                    | :material-close:      | :material-close:      | :material-check-bold: |
 
+| ContainerSSH Backend     | Password              | Public-Key            |  Keyboard-interactive |  GSSAPI               |
+|--------------------------|-----------------------|-----------------------|-----------------------|-----------------------|
+| Webhook support          | :material-check-bold: | :material-check-bold: | :material-close:      | :material-close:      |
+| OAuth2 backend           | :material-close:      | :material-close:      | :material-check-bold: | :material-close:      |
+| Kerberos backend         | :material-check-bold: | :material-close:      | :material-close:      | :material-check-bold: |
+
 ## Authorization
 
-ContainerSSH offers a separate webhook to process authorization after the authentication is complete. This lets you
-compare the username entered in SSH and the username that has been authenticated.
+ContainerSSH offers a separate webhook to process authorization after the authentication is complete. This is useful in the case where you want users to prove their identity using a standard identity solution but would like to implement more complex access control rules in addition. The details of the authorization protocol are described on the [webhook page](auth-webhook.md).  If authorization is enabled the authorization webhook will be sent for every successful authentication attempt regardless of the backend used.
 
-This is especially useful for non-webhook authentication methods, such as Kerberos and OAuth2. The details of the
-authorization protocol are described on the [webhook page](auth-webhook.md).
+## Relationship between SSH, authenticated, and container username
+
 
 ## Configuration
 
-You can configure the authentication with the following options:
+The following configuration variables are used to configure the authentication systems each SSH authentication method is routed to:
 
 ```yaml
 auth:
