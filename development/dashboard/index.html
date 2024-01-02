@@ -5090,7 +5090,7 @@
 
 <h1 id="macro-rendering-error"><em>Macro Rendering Error</em><a class="headerlink" href="#macro-rendering-error" title="Permanent link">&para;</a></h1>
 <p><em>File</em>: <code>development/dashboard.md</code></p>
-<p><em>TypeError</em>: 'NoneType' object is not subscriptable</p>
+<p><em>Exception</em>: Failed to run GitHub query</p>
 <div class="highlight"><pre><span></span><code>Traceback (most recent call last):
   File &quot;/opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/mkdocs_macros/plugin.py&quot;, line 527, in render
     return md_template.render(**page_variables)
@@ -5098,12 +5098,14 @@
     self.environment.handle_exception()
   File &quot;/opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/jinja2/environment.py&quot;, line 936, in handle_exception
     raise rewrite_traceback_stack(source=source)
-  File &quot;&lt;template&gt;&quot;, line 22, in top-level template code
-  File &quot;/home/runner/work/containerssh.github.io/containerssh.github.io/main.py&quot;, line 574, in github_prs
-    for pr in gh_client.get_repo_prs(repo.name):
-  File &quot;/home/runner/work/containerssh.github.io/containerssh.github.io/main.py&quot;, line 465, in get_repo_prs
-    pr.author = prEntry[&quot;author&quot;][&quot;login&quot;]
-TypeError: &#39;NoneType&#39; object is not subscriptable
+  File &quot;&lt;template&gt;&quot;, line 17, in top-level template code
+  File &quot;/home/runner/work/containerssh.github.io/containerssh.github.io/main.py&quot;, line 566, in github_issues
+    for issue in gh_client.get_repo_open_issues(repo.name):
+  File &quot;/home/runner/work/containerssh.github.io/containerssh.github.io/main.py&quot;, line 366, in get_repo_open_issues
+    issueData = self.query(&quot;&quot;&quot;
+  File &quot;/home/runner/work/containerssh.github.io/containerssh.github.io/main.py&quot;, line 98, in query
+    raise Exception(&quot;Failed to run GitHub query&quot;)
+Exception: Failed to run GitHub query
 </code></pre></div>
 
 
